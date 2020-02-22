@@ -5,28 +5,15 @@ public class Main {
     public static void main(String[] args) {
 
         Company mercury = new Company("Mercury");
-        List<Employee> employees = new ArrayList<>();
-        for (int i = 0; i < 80; i++) {
-            employees.add(new Manager(mercury));
-        }
-        for (int i = 0; i < 10; i++) {
-            employees.add(new TopManager(mercury));
-        }
-        for (int i = 0; i < 180; i++) {
-            employees.add(new Operator(mercury));
-        }
-        mercury.hireAll(employees);
+        mercury.hireAll(mercury, 80, 180, 10);
         mercury.getTopSalaryStaff(15);
         mercury.getLowestSalaryStaff(30);
         System.out.println("Доход компании - " + mercury.getIncomeCompany());
         System.out.println("Работников работает в компании - " + mercury.getSalary().size() + "\n");
-        for (int i = 0; i < 135; i++) {
-            mercury.fire(i);
-        }
+        mercury.fire(135);
         mercury.getTopSalaryStaff(15);
         mercury.getLowestSalaryStaff(30);
         System.out.println("Работников работает в компании - " + mercury.getSalary().size());
-
     }
 }
 /*

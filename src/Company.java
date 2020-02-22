@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.List;
 
 public class Company {
     private String name;
@@ -34,17 +33,26 @@ public class Company {
         System.out.println();
     }
 
+    public void hireAll(Company company, int manager, int operator, int topManager) {
+        for (int i = 0; i < manager; i++) {
+            salary.add(new Manager(company));
+        }
+        for (int i = 0; i < operator; i++) {
+            salary.add(new Operator(company));
+        }
+        for (int i = 0; i < topManager; i++) {
+            salary.add(new TopManager(company));
+        }
+    }
+
+    public void fire(int delete) {
+        for (int i = 0; i < delete; i++) {
+            salary.remove(i);
+        }
+    }
+
     public void hire(Employee employee) {
         salary.add(employee);
-    }
-
-    public void hireAll(List<Employee> employee) {
-        salary.addAll(employee);
-    }
-
-
-    public void fire(int i) {
-        salary.remove(i);
     }
 
     public void setIncomeCompany(double incomeCompany) {
