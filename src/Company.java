@@ -16,7 +16,7 @@ public class Company {
             return salary.subList(0, count);
         } else {
             System.out.println("Такого количества сотрудников нет");
-            return null;
+            return salary.subList(0,0);
         }
 
     }
@@ -27,7 +27,7 @@ public class Company {
             return salary.subList(0, count);
         } else {
             System.out.println("Такого количества сотрудников нет");
-            return null;
+            return salary.subList(0,0);
         }
     }
 
