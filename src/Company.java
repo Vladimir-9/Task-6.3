@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class Company {
     private String name;
@@ -9,40 +10,35 @@ public class Company {
         this.name = name;
     }
 
-    public void getTopSalaryStaff(int count) {
+    public List<Employee> getTopSalaryStaff(int count) {
         if (count <= salary.size()) {
             salary.sort(new CompanyComparator());
-            for (; count > 0; count--) {
-                System.out.println("Компания: " + name + " - Зарплата сотрудника - " + salary.get(count - 1).getMonthSalary() + " руб.");
-            }
+            return salary.subList(0, count);
         } else {
             System.out.println("Такого количества сотрудников нет");
+            return null;
         }
-        System.out.println();
+
     }
 
-    public void getLowestSalaryStaff(int count) {
+    public List<Employee> getLowestSalaryStaff(int count) {
         if (count <= salary.size()) {
             salary.sort(new CompanyComparator().reversed());
-            for (; count > 0; count--) {
-                System.out.println("Компания: " + name + " - Зарплата сотрудника - " + salary.get(count - 1).getMonthSalary() + " руб.");
-            }
+            return salary.subList(0, count);
         } else {
             System.out.println("Такого количества сотрудников нет");
+            return null;
         }
-        System.out.println();
     }
 
-    public void hireAll(Company company, int manager, int operator, int topManager) {
-        for (int i = 0; i < manager; i++) {
-            salary.add(new Manager(company));
+    public void print(List<Employee> list) {
+        for (Employee employee : list) {
+            System.out.println("Компания: " + name + " - Зарплата сотрудника - " + employee.getMonthSalary() + " руб.");
         }
-        for (int i = 0; i < operator; i++) {
-            salary.add(new Operator(company));
-        }
-        for (int i = 0; i < topManager; i++) {
-            salary.add(new TopManager(company));
-        }
+    }
+
+    public void hireAll(List<Employee> employee) {
+        salary.addAll(employee);
     }
 
     public void fire(int delete) {

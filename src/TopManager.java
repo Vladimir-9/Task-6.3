@@ -1,5 +1,3 @@
-import java.util.List;
-
 public class TopManager implements Employee {
 
     private Company company;
